@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: care_work_support_production
-  username: care_work_support
-  password: <%= ENV['CARE_WORK_SUPPORT_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
