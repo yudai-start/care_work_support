@@ -5,6 +5,9 @@ set :application, 'care_work_support'
 
 set :repo_url,  'git@github.com:yudai-start/care_work_support.git'
 
+# 使用するbranchを指定。 指定がなければmasterを使う。
+set :branch, 'add-login-page'
+
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 set :rbenv_type, :user
