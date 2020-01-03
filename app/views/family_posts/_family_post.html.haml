@@ -1,0 +1,10 @@
+.upper-message
+  .upper-message__user-name
+    = family_post.user.name
+  .upper-message__date
+    = family_post.created_at.strftime("%Y/%m/%d(%a) %H:%M:%S")
+.lower-message
+  - if family_post.message.present?
+    %p.lower-message__content
+      = family_post.message
+  = image_tag family_post.image.url, class: 'lower-message__image' if family_post.image.present?
