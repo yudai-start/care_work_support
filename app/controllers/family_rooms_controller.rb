@@ -1,2 +1,0 @@
-class FamilyRoomsController < ApplicationController
-end

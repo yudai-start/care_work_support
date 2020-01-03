@@ -1,0 +1,2 @@
+class FamilyPostsController < ApplicationController
+end

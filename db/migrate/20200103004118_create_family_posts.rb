@@ -1,6 +1,6 @@
-class CreateFamilyRooms < ActiveRecord::Migration[5.2]
+class CreateFamilyPosts < ActiveRecord::Migration[5.2]
   def change
-    create_table :family_rooms do |t|
+    create_table :family_posts do |t|
       t.string     :image,   null: false
       t.string     :message
       t.references :user,    foreign_key: true

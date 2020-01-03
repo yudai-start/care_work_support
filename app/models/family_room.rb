@@ -1,2 +1,0 @@
-class FamilyRoom < ApplicationRecord
-end
