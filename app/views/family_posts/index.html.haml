@@ -1,8 +1,13 @@
-.messages
-  = render partial: 'family_post', collection: @family_posts
+%ul.slider
+  - @family_posts.each do |family_post|
+    %li
+      = image_tag family_post.image.url
+      = family_post.created_at.strftime("%Y/%m/%d(%a)")
+    - if family_post.message?
+      = family_post.message
 
 .input-box
-  = form_with(model: @family_post, url: family_posts_path, method: :post, id: "family_post", local: true) do |f|
+  = form_with(model: @family_post, url: family_posts_path, method: :post, local: true) do |f|
     = f.text_field :message, class: "input-box__text", placeholder: ' type a message'
     = f.label :image, class: 'input-box__image' do
       = f.file_field :image, class: 'hidden'

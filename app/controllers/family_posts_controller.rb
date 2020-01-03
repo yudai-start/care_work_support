@@ -1,5 +1,6 @@
 class FamilyPostsController < ApplicationController
  def index
+  @family_post = FamilyPost.new
   @family_posts = FamilyPost.where(user_id: current_user.id).includes(:user)
  end
 
@@ -12,7 +13,7 @@ class FamilyPostsController < ApplicationController
  private
 
  def family_post_params
-   params.permit(:message, :image).merge(user_id: current_user.id)
+   params.require(:family_post).permit(:message, :image).merge(user_id: current_user.id)
  end
 
 end

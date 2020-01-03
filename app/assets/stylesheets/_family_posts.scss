@@ -1,0 +1,22 @@
+// Place all the styles related to the family_posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.input-box__submit{
+  width: 200px;
+}
+
+.bx-wrapper {
+  margin: 0 !important;
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  background: none !important;
+}
+
+.bx-viewport img{
+  width: 80% !important;
+  height: auto !important;
+  margin: auto;
+}
