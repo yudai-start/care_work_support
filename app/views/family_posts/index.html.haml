@@ -3,8 +3,8 @@
     %li
       = image_tag family_post.image.url
       = family_post.created_at.strftime("%Y/%m/%d(%a)")
-    - if family_post.message?
-      = family_post.message
+      - if family_post.message?
+        = family_post.message
 
 .input-box
   = form_with(model: @family_post, url: family_posts_path, method: :post, local: true) do |f|

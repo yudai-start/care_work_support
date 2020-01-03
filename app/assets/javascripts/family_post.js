@@ -7,8 +7,8 @@ $(document).ready(function(){
     pause: 3000,
     // autoHover: true,
     infiniteLoop: true,
-    controls: true,
-    minSlides: 5,
+    // controls: true,
+    // minSlides: 5,
 
 
   });
