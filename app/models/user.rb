@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :user_care_home_posts
   has_many :care_home_posts, through: :user_care_home_post
 
+  mount_uploader :image, ImageUploader
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
