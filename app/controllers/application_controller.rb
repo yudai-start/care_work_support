@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   authorize_resource class: false
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url
+    redirect_to root_path
   end
  
   private
