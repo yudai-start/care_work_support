@@ -13,9 +13,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    super
+    image_path = image_params[:image].original_filename
+    face_ids = registration_face(image_path)
+    if face_ids.present?
+      save_face_id(face_ids, @user)
+    else
+      @user.destroy
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -60,6 +67,42 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     end
 
+    def image_params
+      params.require(:user).permit(:image)
+    end
+
+    def registration_face(image_path)
+      #写真に写っている全ての人物のface_idを抜き出し、rekognitionに登録
+      require "aws-sdk-rekognition"
+
+      rekog = Aws::Rekognition::Client.new(
+        region: 'ap-northeast-1',
+        access_key_id: Rails.application.credentials[:aws][:access_key_id],
+        secret_access_key: Rails.application.credentials[:aws][:secret_access_key]
+        )
+  
+      begin
+        result = rekog.index_faces({
+          collection_id: "care_work_support",
+          image: {
+            s3_object: {
+              bucket: "care-work-support",
+              name: "uploads/user/image/#{image_path}",
+            },
+          }
+        })
+
+        face_ids = result[:face_records].map{ |face| [face[:face][:face_id]]}
+      
+      rescue
+        face_ids = []
+      end
+    end
+
+    def save_face_id(face_ids, user)
+      user.face_id  = face_ids[0][0] #face_idsから、最も一致率の高い人物のface_idを抜き出し、userテーブルに登録
+      user.save
+    end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
@@ -73,6 +116,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
   #   super(resource)
+  #     if @user.face_id.present?
+  #       root_path
+  #     else
+  #       new_user_registration_path
+  #     end
   # end
 
   # The path used after sign up for inactive accounts.
