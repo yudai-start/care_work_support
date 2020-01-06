@@ -5,7 +5,6 @@ class FamilyPostsController < ApplicationController
  end
 
  def create
-  # binding.pry
   @family_post = FamilyPost.create(family_post_params)
   redirect_to family_posts_path
  end

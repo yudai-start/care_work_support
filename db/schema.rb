@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_004118) do
+ActiveRecord::Schema.define(version: 2020_01_03_081235) do
+
+  create_table "care_home_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "image", null: false
+    t.string "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "family_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
@@ -19,6 +26,17 @@ ActiveRecord::Schema.define(version: 2020_01_03_004118) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_family_posts_on_user_id"
+  end
+
+  create_table "user_care_home_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "care_home_post_id"
+    t.string "face_id"
+    t.string "match_face_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["care_home_post_id"], name: "index_user_care_home_posts_on_care_home_post_id"
+    t.index ["user_id"], name: "index_user_care_home_posts_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -38,4 +56,6 @@ ActiveRecord::Schema.define(version: 2020_01_03_004118) do
   end
 
   add_foreign_key "family_posts", "users"
+  add_foreign_key "user_care_home_posts", "care_home_posts"
+  add_foreign_key "user_care_home_posts", "users"
 end
