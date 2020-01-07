@@ -105,7 +105,7 @@ class ApplicationController < ActionController::Base
       NotificationMailer.notice_care_home_post_mail(user).deliver_later
     end
   end
-  
+
   private
 
   def production?
