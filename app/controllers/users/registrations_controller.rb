@@ -16,11 +16,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     image_path = image_params[:image].original_filename
-    face_ids = registration_face(image_path)
+    face_ids = registration_face(image_path) #写真に写っている全ての人物のface_idを取得しrekognitionに登録
     if face_ids.present?
-      save_face_id(face_ids, @user)
+      save_face_id(face_ids, @user) #face_idsから、最も一致率の高い人物のface_idを抜き出し、userテーブルに登録
+   #登録完了のnotice
+
     else
       @user.destroy
+  #「登録ができません。写真を変更してください」のアラート
+
+
     end
   end
 
@@ -71,38 +76,39 @@ class Users::RegistrationsController < Devise::RegistrationsController
       params.require(:user).permit(:image)
     end
 
-    def registration_face(image_path)
-      #写真に写っている全ての人物のface_idを抜き出し、rekognitionに登録
-      require "aws-sdk-rekognition"
+    # def registration_face(image_path)
+    #   #写真に写っている全ての人物のface_idを抜き出し、rekognitionに登録
+    #   require "aws-sdk-rekognition"
 
-      rekog = Aws::Rekognition::Client.new(
-        region: 'ap-northeast-1',
-        access_key_id: Rails.application.credentials[:aws][:access_key_id],
-        secret_access_key: Rails.application.credentials[:aws][:secret_access_key]
-        )
+    #   rekog = Aws::Rekognition::Client.new(
+    #     region: 'ap-northeast-1',
+    #     access_key_id: Rails.application.credentials[:aws][:access_key_id],
+    #     secret_access_key: Rails.application.credentials[:aws][:secret_access_key]
+    #     )
   
-      begin
-        result = rekog.index_faces({
-          collection_id: "care_work_support",
-          image: {
-            s3_object: {
-              bucket: "care-work-support",
-              name: "uploads/user/image/#{image_path}",
-            },
-          }
-        })
+    #   begin
+    #     result = rekog.index_faces({
+    #       collection_id: "care_work_support",
+    #       image: {
+    #         s3_object: {
+    #           bucket: "care-work-support",
+    #           name: "uploads/user/image/#{image_path}",
+    #         },
+    #       }
+    #     })
 
-        face_ids = result[:face_records].map{ |face| [face[:face][:face_id]]}
+    #     face_ids = result[:face_records].map{ |face| [face[:face][:face_id]]}
+
       
-      rescue
-        face_ids = []
-      end
-    end
+    #   rescue
+    #     face_ids = []
+    #   end
+    # end
 
-    def save_face_id(face_ids, user)
-      user.face_id  = face_ids[0][0] #face_idsから、最も一致率の高い人物のface_idを抜き出し、userテーブルに登録
-      user.save
-    end
+    # def save_face_id(face_ids, user)
+    #   user.face_id  = face_ids[0][0] #face_idsから、最大の人物のface_idを抜き出し、userテーブルに登録
+    #   user.save
+    # end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
