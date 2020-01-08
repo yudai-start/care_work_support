@@ -22,7 +22,7 @@
     right: 120px;
     top: 120px;
     z-index: 2;
-    background-color: #fff;
+    background-color: $back-color;
     border-radius: 5px;
     box-sizing: border-box;
     &__inner{
@@ -34,6 +34,7 @@
         width: 100%;
         font-size: $head-font-size;
         line-height: 22px;
+        font-weight: bold;
       }
       .new_user{
         height: 100%;
@@ -60,16 +61,17 @@
         .forget_password{
           margin-top: 30px;
           float: right;
-          color: #ff6b7f;
+          color: $main-color;
         }
         .session_form__inner__submit{
           @include form;
           height: 50px;
           width: 100%;
           margin-top: 30px;
-          background-color: #ff6b7f;
-          color: #fff;
+          background-color: $main-color;
+          color: $back-color;
           font-size: $head-font-size;
+          font-weight: bold;
         }
       }
     }
