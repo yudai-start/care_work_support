@@ -1,13 +1,51 @@
-.header
-  - if current_user.role == "admin"
-    .header_care_home_post
-    .header_family_room
-    .header_sign_out
+- if current_user.role == "admin"
+  %ul.nav--admin
+    %li.nav_care_home_post
+      = link_to care_home_posts_path, method: :get do 
+        .nav_care_home_post--jp
+          入居者様の様子
+        .nav_care_home_post--en
+          Carehome post
+    %li.nav_family_room
+      = link_to family_posts_path, method: :get do
+        .nav_family_room--jp
+          ご家族さまルーム
+        .nav_family_room--en
+          Famiily room
+    %li.nav_user_settiong
+      = link_to users_path, method: :get do
+        .nav_user_settiong--jp
+          入居者様の設定
+        .nav_user_settiong--en
+          User setting
+    %li.nav_sign_out
+      = link_to destroy_user_session_path, method: :delete do
+        .nav_sign_out--jp
+          ログアウト
+        .nav_sign_out--en
+          Sign out
 
-  - else
-    .header_care_home_post
-    .header_family_room
-    .header_sign_out
+- else
+  %ul.nav--general
+    %li.nav_care_home_post
+      = link_to care_home_posts_path, method: :get do  
+        .nav_care_home_post--jp
+          施設の様子
+        .nav_care_home_post--en
+          Carehome post
+    %li.nav_family_room
+      = link_to family_posts_path, method: :get do 
+        .nav_family_room--jp
+          ご家族さまルーム
+        .nav_family_room--en
+          Famiily room
+    %li.nav_sign_out
+      = link_to destroy_user_session_path, method: :delete do
+        .nav_sign_out--jp
+          ログアウト
+        .nav_sign_out--en
+          Sign out
+
 .care_home_post_main
   .care_home_post_index
     %ul.care_home_posts
@@ -30,23 +68,3 @@
           = icon('fas', 'camera', class: 'care_home_post_form_inner__image--icon')
           = f.file_field :image, class: "care_home_post_form_inner__image--btn"
         = f.submit '投稿', class: "care_home_post_form_inner__submit"
-
-
-
-
-
-
-
-
-
-
-
-
--# %ul.care_home_post_index
--#   - @care_home_posts.each do |care_home_post|
--#     %li
--#       = image_tag care_home_post.image.url
--#       = care_home_post.created_at.strftime("%Y/%m/%d(%a)")
--#       - if care_home_post.message?
--#         = care_home_post.message
-

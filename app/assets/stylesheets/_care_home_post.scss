@@ -1,14 +1,39 @@
-.header{
-  height: 80px;
-  width: 70%;
-  position: absolute;
-  position: fixed;
-  top: 10px;
-  right: 10%;
-  background-color: $main-color;
-  border-radius: 5px;
-  z-index: 2;
+.nav--admin{
+  @include nav;
+  .nav_care_home_post{
+    @include nav-menu;
+    width: 25%;
+    border-right: solid 1px $off-color;
+  }
+  .nav_family_room{
+    @include nav-menu;
+    width: 25%;
+    border-right: solid 1px $off-color;
+  }
+  .nav_user_settiong{
+    @include nav-menu;
+    width: 25%;
+    border-right: solid 1px $off-color;
+  }
+  .nav_sign_out{
+    @include nav-menu;
+    width: 25%;
+  }
+}
 
+.nav--general{
+  @include nav;
+  .nav_care_home_post{
+    @include nav-menu;
+    border-right: solid 1px $off-color;
+  }
+  .nav_family_room{
+    @include nav-menu;
+    border-right: solid 1px $off-color;
+  }
+  .nav_sign_out{
+    @include nav-menu;
+  }
 }
 
 .care_home_post_main{
@@ -26,7 +51,8 @@
       .care_home_post{
         width: 80%;
         margin: 0 auto 10px;
-        background-color: $back-color;
+        padding: 10px 0;
+        background-color: $off-color;
         display: block;
         &__image{
           width: 80%;
@@ -64,9 +90,9 @@
   bottom: 15px;
   right: 1%;
   border-radius: 5px;
-  background-color: #92e7e7;
+  background-color: $sub-color;
   z-index: 2;
-  padding: 15px;
+  padding: 15px 1%;
   box-sizing: border-box;
   &_inner{
     height: 30px;
@@ -77,8 +103,8 @@
       .care_home_post_form_inner__message{
         height: 30px;
         width: 89%;
-        background-color: $back-color;
-        padding: 0 7% 0 1%;
+        background-color: $off-color;
+        padding: 0 8% 0 1%;
         font-size: $base-font-size;
       }
       .care_home_post_form_inner__image--btn{
@@ -86,14 +112,15 @@
       }
       .care_home_post_form_inner__image--icon{
         position: absolute;
-        right: 16%;
+        right: 15%;
         bottom: 22px;
+        cursor:pointer
       }
       .care_home_post_form_inner__submit{
         height: 30px;
-        width: 8%;
+        width: 9%;
         font-size: $base-font-size;
-        background-color: #92e7e7;
+        background-color: $sub-color;
       }
     }
   }
