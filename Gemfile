@@ -79,3 +79,4 @@ gem 'devise'
 gem 'cancancan'
 gem 'pry-rails'
 gem 'aws-sdk-rekognition'
+gem "font-awesome-sass"

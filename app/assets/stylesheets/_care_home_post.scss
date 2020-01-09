@@ -1,0 +1,127 @@
+.nav--admin{
+  @include nav;
+  .nav_care_home_post{
+    @include nav-menu;
+    width: 25%;
+    border-right: solid 1px $off-color;
+  }
+  .nav_family_room{
+    @include nav-menu;
+    width: 25%;
+    border-right: solid 1px $off-color;
+  }
+  .nav_user_settiong{
+    @include nav-menu;
+    width: 25%;
+    border-right: solid 1px $off-color;
+  }
+  .nav_sign_out{
+    @include nav-menu;
+    width: 25%;
+  }
+}
+
+.nav--general{
+  @include nav;
+  .nav_care_home_post{
+    @include nav-menu;
+    border-right: solid 1px $off-color;
+  }
+  .nav_family_room{
+    @include nav-menu;
+    border-right: solid 1px $off-color;
+  }
+  .nav_sign_out{
+    @include nav-menu;
+  }
+}
+
+.care_home_post_main{
+  height: 100%;
+  width: 100%;
+  margin-top: 120px;
+  .care_home_post_index{
+    .care_home_posts{
+      height: 100%;
+      width: 60%;
+      margin: 0 auto;
+      padding: 50px 0; 
+      box-sizing: border-box;
+      background-color: $main-rgba;
+      .care_home_post{
+        width: 80%;
+        margin: 0 auto 10px;
+        padding: 10px 0;
+        background-color: $off-color;
+        display: block;
+        &__image{
+          width: 80%;
+          margin: 0 auto;
+          padding-top: 10px;
+          box-sizing: border-box;
+          img{
+            width: 100%;      
+          }
+        }
+        &__message{
+          // height: 18px;
+          width: 80%;
+          margin: 10px 10% 0 10%;
+          font-size: 16px;
+          word-wrap: break-word;
+        }
+        &__creater_at{
+          height: 18px;
+          width: 30%;
+          margin: 10px 0 0 70%;
+          font-size: $base-font-size;
+          color: #59e2e2;
+        }
+      }
+    }
+  }
+}
+
+.care_home_post_form{
+  height: 60px;
+  width: 50%;
+  position: absolute;
+  position: fixed;
+  bottom: 15px;
+  right: 1%;
+  border-radius: 5px;
+  background-color: $sub-color;
+  z-index: 2;
+  padding: 15px 1%;
+  box-sizing: border-box;
+  &_inner{
+    height: 30px;
+    width: 100%;
+    form{
+      height: 100%;
+      width: 100%;
+      .care_home_post_form_inner__message{
+        height: 30px;
+        width: 89%;
+        background-color: $off-color;
+        padding: 0 8% 0 1%;
+        font-size: $base-font-size;
+      }
+      .care_home_post_form_inner__image--btn{
+        display: none;
+      }
+      .care_home_post_form_inner__image--icon{
+        position: absolute;
+        right: 15%;
+        bottom: 22px;
+        cursor:pointer
+      }
+      .care_home_post_form_inner__submit{
+        height: 30px;
+        width: 9%;
+        font-size: $base-font-size;
+        background-color: $sub-color;
+      }
+    }
+  }
+}

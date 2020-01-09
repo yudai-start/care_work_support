@@ -21,7 +21,7 @@
     right: 120px;
     top: 120px;
     z-index: 2;
-    background-color: $back-color;
+    background-color: $off-color;
     border-radius: 5px;
     box-sizing: border-box;
     &__inner{
@@ -68,7 +68,7 @@
           width: 100%;
           margin-top: 30px;
           background-color: $main-color;
-          color: $back-color;
+          color: $off-color;
           font-size: $head-font-size;
           font-weight: bold;
         }

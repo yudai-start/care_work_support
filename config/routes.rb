@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   root to: "care_home_posts#index"
   resources :family_posts
   resources :care_home_posts
+  resources :users
 
 end
