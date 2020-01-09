@@ -1,25 +1,35 @@
-.input-box
 .header
-あ
-.care_home_post_main
-  %ul.care_home_post_index
-    - @care_home_posts.each do |care_home_post|
-      %li.care_home_post
-        .care_home_post__image
-          = image_tag care_home_post.image.url
-        .care_home_post_message
-          - if care_home_post.message?
-            = care_home_post.message
-        .care_home_post_message
-          = care_home_post.created_at.strftime("%Y/%m/%d(%a)")
+  - if current_user.role == "admin"
+    .header_care_home_post
+    .header_family_room
+    .header_sign_out
 
-.care_home_post_form
-  .care_home_post_form_inner
-  = form_with(model: @care_home_post, url: care_home_posts_path, method: :post, local: true) do |f|
-    = f.text_field :message, class: "care_home_post_form_inner__text", placeholder: ''
-    = f.label :image, class: "care_home_post_form_inner__image" do
-      = f.file_field :image, class: "care_home_post_form_inner__btn"
-    = f.submit 'Send', class: "care_home_post_form_inner__submit"
+  - else
+    .header_care_home_post
+    .header_family_room
+    .header_sign_out
+.care_home_post_main
+  .care_home_post_index
+    %ul.care_home_posts
+      - @care_home_posts.each do |care_home_post|
+        %li.care_home_post
+          .care_home_post__image
+            = image_tag care_home_post.image.url
+          .care_home_post__message
+            - if care_home_post.message?
+              = care_home_post.message
+          .care_home_post__creater_at
+            = care_home_post.created_at.strftime("%Y/%m/%d")
+
+- if current_user.role == "admin"
+  .care_home_post_form
+    .care_home_post_form_inner
+      = form_with(model: @care_home_post, url: care_home_posts_path, method: :post, local: true) do |f|
+        = f.text_field :message, class: "care_home_post_form_inner__message", placeholder: 'タイトルを入力してください'
+        = f.label :image, class: "care_home_post_form_inner__image" do
+          = icon('fas', 'camera', class: 'care_home_post_form_inner__image--icon')
+          = f.file_field :image, class: "care_home_post_form_inner__image--btn"
+        = f.submit '投稿', class: "care_home_post_form_inner__submit"
 
 
 

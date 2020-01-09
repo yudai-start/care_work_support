@@ -2,7 +2,7 @@ class CareHomePostsController < ApplicationController
 
   def index
     @care_home_post = CareHomePost.new
-    @care_home_posts = CareHomePost.all
+    @care_home_posts = CareHomePost.all.order("created_at DESC")
   end
 
   def create
