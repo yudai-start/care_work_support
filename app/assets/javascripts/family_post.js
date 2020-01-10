@@ -6,5 +6,6 @@ $(document).ready(function(){
     speed: 3000,
     pause: 3000,
     infiniteLoop: true,
+    pager: false
   });
 });
