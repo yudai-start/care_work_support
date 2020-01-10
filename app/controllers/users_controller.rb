@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   end
 
   def family_post
-    @user.FamilyPosts.create(family_post_params)
+    @user.family_posts.create(family_post_params)
     redirect_to user_path
    end
   
