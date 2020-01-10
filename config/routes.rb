@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :care_home_posts
   resources :users do
     member do
+      get :family_room
       post :family_post
     end
   end
