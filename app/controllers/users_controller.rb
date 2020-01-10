@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:family_room, :family_post]
   
   def index
+    @q = User.ransack(params[:q])
+    @users = @q.result.where(role: "general")
   end
 
   def family_room
