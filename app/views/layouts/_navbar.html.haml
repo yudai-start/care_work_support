@@ -1,0 +1,47 @@
+- if current_user.role == "admin"
+  %ul.nav--admin
+    %li.nav_care_home_post
+      = link_to care_home_posts_path, method: :get do 
+        .nav_care_home_post--jp
+          入居者様の様子
+        .nav_care_home_post--en
+          Carehome post
+    %li.nav_family_room
+      = link_to family_room_user_path(current_user), method: :get do
+        .nav_family_room--jp
+          ご家族さまルーム
+        .nav_family_room--en
+          Famiily room
+    %li.nav_user_settiong
+      = link_to users_path, method: :get do
+        .nav_user_settiong--jp
+          入居者様の設定
+        .nav_user_settiong--en
+          User setting
+    %li.nav_sign_out
+      = link_to destroy_user_session_path, method: :delete do
+        .nav_sign_out--jp
+          ログアウト
+        .nav_sign_out--en
+          Sign out
+
+- else
+  %ul.nav--general
+    %li.nav_care_home_post
+      = link_to care_home_posts_path, method: :get do  
+        .nav_care_home_post--jp
+          施設の様子
+        .nav_care_home_post--en
+          Carehome post
+    %li.nav_family_room
+      = link_to family_room_user_path(current_user), method: :get do 
+        .nav_family_room--jp
+          ご家族さまルーム
+        .nav_family_room--en
+          Famiily room
+    %li.nav_sign_out
+      = link_to destroy_user_session_path, method: :delete do
+        .nav_sign_out--jp
+          ログアウト
+        .nav_sign_out--en
+          Sign out
