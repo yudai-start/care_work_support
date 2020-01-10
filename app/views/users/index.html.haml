@@ -1,0 +1,21 @@
+= render partial: "layouts/navbar"
+
+.users_search
+  = search_form_for @q do |f|
+    = f.text_field :name_cont, placeholder:"お名前でさがす"
+    = button_tag type: 'submit', class: "search_btn" do
+      = icon('fas', 'search')
+
+.sign_up_btn
+  = link_to new_user_registration_path do
+    新規登録
+
+.users_index_main
+  %ul.user
+    - @users.each do |user|
+      %li.user_box
+        = link_to "users/#{user.id}" do
+          .user_box__name
+            = user.name + "さま"
+          .user_box__image
+            = image_tag user.image.url
