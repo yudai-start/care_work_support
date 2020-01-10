@@ -10,16 +10,17 @@
 }
 
 .bx-wrapper {
-  margin: 0 !important;
+  margin: 100px !important;
   -moz-box-shadow: none !important;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  border: none !important;
+  // border: none !important;
   background: none !important;
 }
 
 .bx-viewport img{
-  width: 80% !important;
-  height: auto !important;
+  width: auto !important;
+  height: 70vh !important;
   margin: auto;
+  background-color: red;
 }

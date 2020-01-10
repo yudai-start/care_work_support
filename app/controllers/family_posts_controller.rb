@@ -1,8 +1,12 @@
 class FamilyPostsController < ApplicationController
  def index
   @family_post = FamilyPost.new
-  @family_posts = FamilyPost.where(user_id: current_user.id).includes(:user)
- end
+  if current_user.role == "admin"
+    @family_posts = FamilyPost.all.order("created_at DESC").includes(:user)
+  else
+    @family_posts = FamilyPost.where(user_id: current_user.id).order("created_at DESC").includes(:user)
+  end
+end
 
  def create
   @family_post = FamilyPost.create(family_post_params)
