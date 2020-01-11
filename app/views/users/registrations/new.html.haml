@@ -1,29 +1,48 @@
-%h2 Sign up
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :image
-    %br/
-    = f.file_field :image
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name, autofocus: true
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "Sign Up"
-= render "devise/shared/links"
+= render partial: "layouts/navbar"
+
+.sign_up_main
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = render "devise/shared/error_messages", resource: resource
+    .image_field
+      .image_area
+        = icon("fas", "user", class: "image_area__icon")
+        %p.image_area_text
+          お顔を撮影して
+          %br
+          登録してください
+
+      = f.label :image, class: "image_form" do
+        = f.file_field :image, class: 'image_form_input'
+      %p.attention
+        ※以下の写真を使用した場合、
+        %br
+        登録ができない場合があります。
+        %br
+        ・正面以外から撮影したもの
+        %br
+        ・複数人を撮影したもの
+        %br
+        ・暗い場所で撮影したもの
+
+    .other_field
+      .field
+        = f.label :name
+        %br/
+        = f.text_field :name, placeholder:"例）山田　太郎", autofocus: true
+      .field
+        = f.label :family_email
+        %br/
+        = f.email_field :email, autofocus: true, placeholder:"例）care@mail.com", autocomplete: "email"
+        %p.attention
+          ※写真が投稿されると自動で通知をします。
+          %br
+            通知を希望するご家族様のメールアドレスを入力してください。
+      .field
+        = f.label :password
+        %br/
+        = f.password_field :password, placeholder:"#{@minimum_password_length}文字以上の英数字", autocomplete: "new-password"
+      .field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, placeholder:"#{@minimum_password_length}文字以上の英数字", autocomplete: "new-password"
+      = f.submit "登録", class: "registration_btn"

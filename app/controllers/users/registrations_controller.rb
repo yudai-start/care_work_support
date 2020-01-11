@@ -120,7 +120,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
+  def after_sign_up_path_for(resource)
+    users_path
+  end
   #   super(resource)
   #     if @user.face_id.present?
   #       root_path
