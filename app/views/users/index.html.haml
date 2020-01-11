@@ -13,7 +13,7 @@
   %ul.user
     - @users.each do |user|
       %li.user_box
-        = link_to "users/#{user.id}" do
+        = link_to "users/#{user.id}/edit" do
           .user_box__name
             = user.name + "さま"
           .user_box__image

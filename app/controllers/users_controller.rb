@@ -1,10 +1,23 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:family_room, :family_post]
+  before_action :set_user, only: [:edit, :update, :family_room, :family_post]
   
   def index
     @q = User.ransack(params[:q])
     @users = @q.result.where(role: "general").order("created_at DESC")
   end
+
+  def edit
+  end
+
+  def update
+    @user.update(user_params)
+    #   redirect_to users_path
+    # else
+    #   redirect_to "users/#{@user.id}/edit"
+    # end
+
+  end
+
 
   def family_room
     @family_post = FamilyPost.new
@@ -25,5 +38,9 @@ class UsersController < ApplicationController
    def set_user
     @user = User.find(params[:id])
    end
+
+   def user_params
+    params.require(:user).permit(:image, :name, :email, :password, :password_confirmation)
+  end
 
 end
