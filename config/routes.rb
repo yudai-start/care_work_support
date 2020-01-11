@@ -13,6 +13,4 @@ Rails.application.routes.draw do
       post :family_post
     end
   end
-  
-
 end

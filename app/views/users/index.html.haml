@@ -6,9 +6,8 @@
     = button_tag type: 'submit', class: "search_btn" do
       = icon('fas', 'search')
 
-.sign_up_btn
-  = link_to new_user_registration_path do
-    新規登録
+= link_to new_user_registration_path, class: "sign_up_btn" do
+  新規登録
 
 .users_index_main
   %ul.user

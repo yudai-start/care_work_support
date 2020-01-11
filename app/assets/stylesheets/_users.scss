@@ -33,23 +33,15 @@
 }
 
 .sign_up_btn{
-  height: 40px;
-  width: 8%;
+  @include btn;
   position: absolute;
   top: 128px;
   right: 31%;
   position: fixed;
-  border-radius: 20px;
-  line-height: 40px;
-  text-align: center;
-  background-color: $main-color;
-  color: $off-color;
-  font-size: $head-font-size;
   a{
     color: $off-color;;
   }
 }
-
 
 .users_index_main{
   width: 100%;
@@ -76,6 +68,74 @@
           margin: auto;
         }
       }    
+    }
+  }
+}
+
+.sign_up_main{
+  width: 80%;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: $main-rgba;
+  margin: 120px auto 0 ;
+  .new_user{
+    width: 100%;
+    display: flex;
+    .image_field{
+      width: 50%;
+      padding-left: 10%;
+      .image_area{
+        height: 350px;
+        width: 280px;
+        margin-top: 25px;
+        box-sizing: border-box;
+        background-color: $off-color;
+        text-align: center;
+        img{
+          width: 100%;
+          max-height: 350px;
+        }
+        &__icon{
+          font-size: 100px;
+          margin-top: 150px;
+        }
+      }
+      .image_form_input{
+        margin-top: 3px;
+        border: none;
+        input{
+          color: red;
+        }
+      }
+      .attention{
+        font-size: 13px;
+        margin: 10px 0 0 5%;
+      }
+    }
+    .other_field{
+      height: 100%;
+      width: 50%;
+      padding-right: 5%;
+      .field{
+        margin-top: 20px;
+        font-size: 15px;
+        #user_name, #user_email, #user_password, #user_password_confirmation{
+          @include form;
+          font-size: $head-font-size;
+          background-color: $off-color;
+        }
+        .attention{
+          font-size: $base-font-size;
+          margin-top: 10px;
+        }      
+      }
+      .registration_btn{
+        @include btn;
+        width: 100px;
+        margin-top: 20px;
+        border: none;
+        float: right;
+      }
     }
   }
 }
