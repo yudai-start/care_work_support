@@ -1,0 +1,17 @@
+= render partial: "layouts/navbar"
+
+.family_rooms_search
+  = search_form_for @q do |f|
+    = f.text_field :user_name_cont, placeholder:"お名前でさがす"
+    = button_tag type: 'submit', class: "search_btn" do
+      = icon('fas', 'search')
+
+.family_rooms_index_main
+  %ul.family_room
+    - @family_rooms.each do |family_room|
+      %li.family_room_box
+        = link_to "family_rooms/#{family_room.id}/family_posts" do
+          .family_room_box__name
+            = family_room.user.name + "さまルーム"
+          .family_room_box__image
+            = image_tag family_room.user.image.url

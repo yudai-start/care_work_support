@@ -48,3 +48,66 @@
   color: $off-color;
   font-size: $head-font-size;
 }
+
+@mixin search_form{
+  height: 60px;
+  width: 30%;
+  position: absolute;
+  position: fixed;
+  top: 120px;
+  right: 42%;
+  padding: 15px 1%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background-color: $sub-color;   
+  .user_search, .family_room_search{
+    height: 30px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    #q_name_cont, #q_user_name_cont{
+      height: 100%;
+      width: 100%;
+      padding: 0 25px 0 5px; 
+      box-sizing: border-box;
+      font-size: $head-font-size;
+      background-color: $off-color;
+    }
+    .search_btn{
+      border: none;
+      position: absolute;
+      position: fixed;
+      top: 143px;
+      right: 43%;
+    }
+  }
+}
+
+@mixin search_index{
+  width: 100%;
+  margin-top: 200px;
+  .user, .family_room{
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $main_rgba;
+    &_box{
+      width: 20%;
+      margin-top: 20px;
+      padding: 0 2%;
+      box-sizing: border-box;
+      &__name{
+        color: rgba(74,74,74,0.8);
+      }
+      &__image{
+        img{
+          width: 100%;
+          margin: auto;
+        }
+      }    
+    }
+  }
+}
