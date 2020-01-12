@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_081235) do
+ActiveRecord::Schema.define(version: 2020_01_12_044336) do
 
   create_table "care_home_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
@@ -22,10 +22,16 @@ ActiveRecord::Schema.define(version: 2020_01_03_081235) do
   create_table "family_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
     t.string "message"
+    t.integer "family_room_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "family_rooms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_family_posts_on_user_id"
+    t.index ["user_id"], name: "index_family_rooms_on_user_id"
   end
 
   create_table "user_care_home_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_081235) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "family_posts", "users"
+  add_foreign_key "family_rooms", "users"
   add_foreign_key "user_care_home_posts", "care_home_posts"
   add_foreign_key "user_care_home_posts", "users"
 end

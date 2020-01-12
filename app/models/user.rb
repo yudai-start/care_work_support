@@ -2,7 +2,10 @@ class User < ApplicationRecord
   enum role: { general: 1, admin: 99 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :family_posts, dependent: :destroy
+ 
+  has_one :family_room, dependent: :destroy
+  has_many :family_posts
+
   has_many :user_care_home_posts, dependent: :destroy
   has_many :care_home_posts, through: :user_care_home_post
 
