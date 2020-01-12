@@ -15,11 +15,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
+      
     image_path = image_params[:image].original_filename
     face_ids = registration_face(image_path) #写真に写っている全ての人物のface_idを取得しrekognitionに登録
     if face_ids.present?
       save_face_id(face_ids, @user) #face_idsから、最も一致率の高い人物のface_idを抜き出し、userテーブルに登録
-   #登録完了のnotice
+      @user.build_family_room.save #ユーザー専用のfamily_roomを生成
+  
+      #登録完了のnotice
 
     else
       @user.destroy
@@ -75,7 +78,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def image_params
       params.require(:user).permit(:image)
     end
-
+    
     # def registration_face(image_path)
     #   #写真に写っている全ての人物のface_idを抜き出し、rekognitionに登録
     #   require "aws-sdk-rekognition"
