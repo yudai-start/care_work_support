@@ -8,7 +8,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_path
   end
 
-            name: "uploads/#{image_path}",
   private
 
   def production?
