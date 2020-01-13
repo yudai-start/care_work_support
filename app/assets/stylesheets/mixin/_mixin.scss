@@ -49,6 +49,23 @@
   font-size: $head-font-size;
 }
 
+@mixin user_search_btn{
+  border: none;
+  position: absolute;
+  position: fixed;
+  top: 143px;
+  right: 44%;
+}
+
+@mixin other_room_search_btn{
+  border: none;
+  position: absolute;
+  position: fixed;
+  top: 143px;
+  right: 37%;
+}
+
+
 @mixin search_form{
   height: 60px;
   width: 30%;
@@ -60,25 +77,18 @@
   box-sizing: border-box;
   border-radius: 5px;
   background-color: $sub-color;   
-  .user_search, .family_room_search{
+  .user_search, .family_room_search, .care_home_post_search{
     height: 30px;
     width: 100%;
     margin: auto;
     display: flex;
-    #q_name_cont, #q_user_name_cont{
+    #q_name_cont, #q_user_name_cont, #q_user_care_home_posts_user_name_cont{
       height: 100%;
       width: 100%;
       padding: 0 25px 0 5px; 
       box-sizing: border-box;
       font-size: $head-font-size;
       background-color: $off-color;
-    }
-    .search_btn{
-      border: none;
-      position: absolute;
-      position: fixed;
-      top: 143px;
-      right: 43%;
     }
   }
 }

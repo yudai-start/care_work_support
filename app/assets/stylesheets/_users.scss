@@ -1,5 +1,8 @@
 .users_search{
   @include search_form;
+  .search_btn{     
+    @include user_search_btn;
+  }
 }
 
 .sign_up_btn{
