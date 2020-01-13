@@ -3,13 +3,13 @@
     %li.nav_care_home_post
       = link_to care_home_posts_path, method: :get do 
         .nav_care_home_post--jp
-          入居者様のご様子
+          ホーム全体の様子
         .nav_care_home_post--en
           Carehome post
     %li.nav_family_room
       = link_to family_rooms_path, method: :get do
         .nav_family_room--jp
-          ご家族さまルーム
+          ご家族専用ルーム
         .nav_family_room--en
           Famiily room
     %li.nav_user_settiong
@@ -30,13 +30,13 @@
     %li.nav_care_home_post
       = link_to care_home_posts_path, method: :get do  
         .nav_care_home_post--jp
-          施設の様子
+          ホーム全体の様子
         .nav_care_home_post--en
           Carehome post
     %li.nav_family_room
       = link_to family_room_family_posts_path(current_user.family_room.id), method: :get do 
         .nav_family_room--jp
-          ご家族さまルーム
+          ご家族専用ルーム
         .nav_family_room--en
           Famiily room
     %li.nav_sign_out
