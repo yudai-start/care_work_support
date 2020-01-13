@@ -20,11 +20,4 @@
           .post__creater_at
             = family_post.created_at.strftime("%Y/%m/%d")
 
--# .input-box
--#   = form_with(model: @family_post, url: family_posts_path, method: :post, local: true) do |f|
--#     = f.text_field :message, class: "input-box__text", placeholder: ' type a message'
--#     = f.label :image, class: 'input-box__image' do
--#       = f.file_field :image, class: 'hidden'
--#     = f.submit 'Send', class: "input-box__submit"
-
 = render partial: "post_form"
