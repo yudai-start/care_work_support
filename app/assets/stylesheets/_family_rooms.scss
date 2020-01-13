@@ -1,0 +1,8 @@
+.family_rooms_search{
+  @include search_form;
+  right: 37%;
+}
+
+.family_rooms_index_main{
+  @include search_index;
+}
