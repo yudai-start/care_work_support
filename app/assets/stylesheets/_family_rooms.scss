@@ -1,6 +1,16 @@
 .family_rooms_search{
   @include search_form;
   right: 37%;
+  .search_btn{     
+    @include family_room_search_btn;
+  }
+}
+
+.search_btn{
+  position: absolute;
+  position: fixed;
+  top: 143px;
+  right: 35%;
 }
 
 .family_rooms_index_main{

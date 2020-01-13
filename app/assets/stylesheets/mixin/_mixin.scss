@@ -49,6 +49,23 @@
   font-size: $head-font-size;
 }
 
+@mixin user_search_btn{
+  border: none;
+  position: absolute;
+  position: fixed;
+  top: 143px;
+  right: 43%;
+}
+
+@mixin family_room_search_btn{
+  border: none;
+  position: absolute;
+  position: fixed;
+  top: 143px;
+  right: 39%;
+}
+
+
 @mixin search_form{
   height: 60px;
   width: 30%;
@@ -72,13 +89,6 @@
       box-sizing: border-box;
       font-size: $head-font-size;
       background-color: $off-color;
-    }
-    .search_btn{
-      border: none;
-      position: absolute;
-      position: fixed;
-      top: 143px;
-      right: 43%;
     }
   }
 }
