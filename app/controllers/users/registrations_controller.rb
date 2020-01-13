@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  include CommonActions
   prepend_before_action :require_no_authentication, only: [:cancel]
 
   # before_action :configure_sign_up_params, only: [:create]
@@ -13,8 +14,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-      
+    super    
     image_path = image_params[:image].original_filename
     face_ids = registration_face(image_path) #写真に写っている全ての人物のface_idを取得しrekognitionに登録
     if face_ids.present?
@@ -27,7 +27,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @user.destroy
   #「登録ができません。写真を変更してください」のアラート
   
-end
+    end
   end
 
   # GET /resource/edit
@@ -54,54 +54,21 @@ end
   #   super
   # end
 
-  protected
-    def current_user_is_admin?
-      user_signed_in? && current_user.role == "admin"
-    end
+protected
+  def current_user_is_admin?
+    user_signed_in? && current_user.role == "admin"
+  end
 
-    def sign_up(resource_name, resource)
-      if !current_user_is_admin?
-        sign_in(resource_name, resource)
-      end
+  def sign_up(resource_name, resource)
+    if !current_user_is_admin?
+      sign_in(resource_name, resource)
     end
+  end
 
-    def image_params
-      params.require(:user).permit(:image)
-    end
-    
-    # def registration_face(image_path)
-    #   #写真に写っている全ての人物のface_idを抜き出し、rekognitionに登録
-    #   require "aws-sdk-rekognition"
-
-    #   rekog = Aws::Rekognition::Client.new(
-    #     region: 'ap-northeast-1',
-    #     access_key_id: Rails.application.credentials[:aws][:access_key_id],
-    #     secret_access_key: Rails.application.credentials[:aws][:secret_access_key]
-    #     )
+  def image_params
+    params.require(:user).permit(:image)
+  end
   
-    #   begin
-    #     result = rekog.index_faces({
-    #       collection_id: "care_work_support",
-    #       image: {
-    #         s3_object: {
-    #           bucket: "care-work-support",
-    #           name: "uploads/user/image/#{image_path}",
-    #         },
-    #       }
-    #     })
-
-    #     face_ids = result[:face_records].map{ |face| [face[:face][:face_id]]}
-
-      
-    #   rescue
-    #     face_ids = []
-    #   end
-    # end
-
-    # def save_face_id(face_ids, user)
-    #   user.face_id  = face_ids[0][0] #face_idsから、最大の人物のface_idを抜き出し、userテーブルに登録
-    #   user.save
-    # end
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

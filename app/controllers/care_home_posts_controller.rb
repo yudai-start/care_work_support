@@ -1,4 +1,5 @@
 class CareHomePostsController < ApplicationController
+  include CommonActions
 
   def index
     @care_home_post = CareHomePost.new
@@ -7,6 +8,7 @@ class CareHomePostsController < ApplicationController
 
   def create
     @care_home_post = CareHomePost.create(care_home_post_params)
+
     image_path = care_home_post_params[:image].original_filename #顔認証で必要となる投稿写真のファイル名のみを抽出
     users = search_all_users_in_photo(image_path)  #投稿された写真に写っている人物全員を特定
     if users.present?
