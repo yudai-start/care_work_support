@@ -27,7 +27,7 @@ class CareHomePostsController < ApplicationController
   private
 
   def care_home_post_params
-    params.require(:care_home_post).permit(:message, :image)
+    params.require(:care_home_post).permit(:title, :image)
   end
 
 end

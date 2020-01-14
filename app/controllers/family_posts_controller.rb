@@ -15,7 +15,7 @@ class FamilyPostsController < ApplicationController
   private
 
   def family_post_params
-    params.require(:family_post).permit(:message, :image).merge(family_room_id: params[:family_room_id])
+    params.require(:family_post).permit(:title, :image).merge(family_room_id: params[:family_room_id])
   end
 
   def set_family_room

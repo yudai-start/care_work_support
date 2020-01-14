@@ -14,14 +14,14 @@ ActiveRecord::Schema.define(version: 2020_01_12_044336) do
 
   create_table "care_home_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
-    t.string "message"
+    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "family_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "image", null: false
-    t.string "message"
+    t.string "title"
     t.integer "family_room_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 2020_01_12_044336) do
 
   create_table "user_care_home_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "care_home_post_id"
-    t.string "face_id"
-    t.string "match_face_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_044336) do
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "image"
+    t.string "image", null: false
     t.string "face_id"
     t.integer "role", default: 1, null: false
     t.string "reset_password_token"
@@ -58,6 +56,8 @@ ActiveRecord::Schema.define(version: 2020_01_12_044336) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["face_id"], name: "index_users_on_face_id"
+    t.index ["name"], name: "index_users_on_name"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
