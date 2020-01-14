@@ -23,11 +23,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
         @user.build_family_room.save #ユーザー専用のfamily_roomを生成
     
         #登録完了のnotice
-
       else
         @user.destroy
-    #「登録ができません。写真を変更してください」のアラート
-    
+        set_flash_message! :notice, :miss_rekognition
+
       end
     end
   end
