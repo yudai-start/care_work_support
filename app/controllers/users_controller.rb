@@ -4,4 +4,5 @@ class UsersController < ApplicationController
     @q = User.ransack(params[:q])
     @users = @q.result.where(role: "general").order("created_at DESC")
   end
+  
 end

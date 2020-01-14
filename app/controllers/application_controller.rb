@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :basic_auth, if: :production?
+  # before_action :basic_auth, if: :production? #ポートフォリオの認証の手間を考慮し、一旦停止
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
 

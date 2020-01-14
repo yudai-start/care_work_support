@@ -1,7 +1,7 @@
 .post_form
   .post_form_inner
     = form_with(model: @family_post, url: family_room_family_posts_path, method: :post, local: true) do |f|
-      = f.text_field :message, class: "post_form_inner__message", placeholder: 'タイトルを入力してください'
+      = f.text_field :title, class: "post_form_inner__title", placeholder: 'タイトルを入力してください'
       = f.label :image, class: "post_form_inner__image" do
         = icon('fas', 'camera', class: 'post_form_inner__image--icon')
         = f.file_field :image, class: "post_form_inner__image--btn"

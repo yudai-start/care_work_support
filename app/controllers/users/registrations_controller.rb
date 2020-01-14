@@ -14,20 +14,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super    
-    image_path = image_params[:image].original_filename
-    face_ids = registration_face(image_path) #写真に写っている全ての人物のface_idを取得しrekognitionに登録
-    if face_ids.present?
-      save_face_id(face_ids, @user) #face_idsから、最も一致率の高い人物のface_idを抜き出し、userテーブルに登録
-      @user.build_family_room.save #ユーザー専用のfamily_roomを生成
-  
-      #登録完了のnotice
-
-    else
-      @user.destroy
-  #「登録ができません。写真を変更してください」のアラート
-  
+    super
+    if resource.persisted? #登録が成功した場合に続く処理
+      image_path = image_params[:image].original_filename
+      face_ids = registration_face(image_path) #写真に写っている全ての人物のface_idを取得しrekognitionに登録
+      if face_ids.present? #登録が成功し、さらに顔認証も成功した場合
+        save_face_id(face_ids, @user) #face_idsから、最も一致率の高い人物のface_idを抜き出し、userテーブルに登録
+        @user.build_family_room.save #ユーザー専用のfamily_roomを生成   
+      else #登録が成功したが、顔認証に失敗した場合
+        @user.destroy
+        set_flash_message! :notice, :miss_rekognition #顔認証失敗の場合のアラートを設定
+      end
     end
+    #登録に失敗したパターン 通常の登録失敗のフローにまま
   end
 
   # GET /resource/edit
