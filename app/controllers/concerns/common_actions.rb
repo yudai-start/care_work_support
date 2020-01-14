@@ -50,14 +50,12 @@ module CommonActions
   def search_all_users_in_photo(image_path) #一つの写真に写っている全ての人物に対し、登録されているユーザーの全てのface_idから、最も一致率の高いface_idを抽出
 
     face_ids = registration_face(image_path)
-    binding.pry
     if face_ids.present?
       match_face_ids = face_ids.map do |face_id|
         search_face(face_id)
       end
       delete_face_id_from_rekog(face_ids) #一ユーザーに対しface_idを一つに制限するため、registration_faceで登録したface_idの削除
       match_face_ids = match_face_ids.reject(&:blank?) #nilと空文字を削除
-      binding.pry
       if match_face_ids.present?
         users = match_face_ids.map do |match_face_id| #match_face_idsの各idに一致するユーザーを抽出
           User.find_by(face_id: match_face_id) 
