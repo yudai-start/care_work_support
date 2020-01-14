@@ -3,7 +3,8 @@ class CareHomePostsController < ApplicationController
 
   def index
     @care_home_post = CareHomePost.new
-
+    
+    #検索フォーム
     @q = CareHomePost.ransack(params[:q])
     @care_home_posts = @q.result.order("created_at DESC")
   end
@@ -11,6 +12,7 @@ class CareHomePostsController < ApplicationController
   def create
     @care_home_post = CareHomePost.create(care_home_post_params)
 
+    #以下、awsRekognitionによる顔認証と登録済のuserとの照合
     image_path = care_home_post_params[:image].original_filename #顔認証で必要となる投稿写真のファイル名のみを抽出
     users = search_all_users_in_photo(image_path)  #投稿された写真に写っている人物全員を特定
     
@@ -19,10 +21,13 @@ class CareHomePostsController < ApplicationController
       send_mail(users) #各userの登録アドレスに通知メール送信
     end
     redirect_to root_path
-    # , notice: users.name + "様のご登録先へ通知しました"
+    # , notice: users.name + "様のご登録先へ通知しました"を実装予定
   end
+
+  private
 
   def care_home_post_params
     params.require(:care_home_post).permit(:message, :image)
   end
+
 end
