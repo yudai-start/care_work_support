@@ -9,7 +9,15 @@ if Rails.env.production?
   #   authentication: 'plain',
   #   enable_starttls_auto: true
   # }
-  ActionMailer::Base.delivery_method = :letter_opener
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  :user_name => '21045c50cef646',
+  :password => 'e243ded583d040',
+  :address => 'smtp.mailtrap.io',
+  :domain => 'smtp.mailtrap.io',
+  :port => '2525',
+  :authentication => :cram_md5
+}
 elsif Rails.env.development?
   ActionMailer::Base.delivery_method = :letter_opener
 else
