@@ -33,7 +33,7 @@ Mail: general@com
 Pass: gen111
 - メール通知機能のデモ  
 管理者アカウントでログインし、右下の投稿フォームより写真を投稿してください。  
-入居者と顔が一致した場合、登録済のメールアドレスへ通知が送られ、画面上部にその旨が表示されます。
+入居者と顔が一致した場合、登録済のメールアドレスへ通知が送られ、画面上部にその旨が表示されます。  
 ※他の方の目に触れる可能性があるため、適宜下記のフリー写真をダウンロードして使用してください。  
 https://care-work-support.s3-ap-northeast-1.amazonaws.com/uploads/roujin535.jpg  
 https://care-work-support.s3-ap-northeast-1.amazonaws.com/uploads/1ab607.jpg
