@@ -9,8 +9,8 @@ if Rails.env.production?
   #   authentication: 'plain',
   #   enable_starttls_auto: true
   # }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
   :user_name => '21045c50cef646',
   :password => 'e243ded583d040',
   :address => 'smtp.mailtrap.io',
