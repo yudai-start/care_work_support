@@ -12,7 +12,7 @@
   width: 60%;
   position: absolute;
   position: fixed;
-  top: 20px;
+  top: 30px;
   right: 20%;
   background-color: $main-color;
   border-radius: 5px;
@@ -95,7 +95,7 @@
 
 @mixin search_index{
   width: 100%;
-  margin-top: 200px;
+  margin-top: 220px;
   .user, .family_room{
     width: 90%;
     margin: 0 auto;
