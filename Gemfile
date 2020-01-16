@@ -81,4 +81,3 @@ gem 'pry-rails'
 gem 'aws-sdk-rekognition'
 gem "font-awesome-sass"
 gem 'ransack'
-gem 'letter_opener'
