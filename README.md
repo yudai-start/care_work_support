@@ -27,7 +27,7 @@
 - テスト用アカウント
 管理者アカウント（施設職員向け）  
 Mail: admin@com  
-Pass: adm999 
+Pass: adm999  
 一般ユーザー（施設入居者の家族向け）
 Mail: general@com  
 Pass: gen111
