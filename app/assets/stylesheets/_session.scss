@@ -7,7 +7,7 @@
     width: 100%;
     /* 画像ファイルの指定 */
     background: image-url("916558f15c269cfaa8da7be2b21cae05.jpg");
-    opacity: 0.2;
+    opacity: 0.7;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -75,4 +75,9 @@
       }
     }
   }
+}
+
+.message_for_recruite{
+  color: red;
+  font-size: 13px;
 }

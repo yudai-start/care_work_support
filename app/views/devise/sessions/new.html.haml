@@ -4,14 +4,16 @@
     .session_form__inner
       %h2 ログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .message_for_recruite
+          ※デモ用のため入力を変更せずログイン可能です。
         .session_form__inner__email
           = f.label :"email"
           %br/
-          = f.email_field :email, autocomplete: "email"
+          = f.email_field :email, value: "admin@com", autocomplete: "email"
         .session_form__inner__password
           = f.label :"password"
           %br/
-          = f.password_field :password, autocomplete: "current-password"
+          = f.password_field :password, value: "adm999", autocomplete: "current-password"
         - if devise_mapping.rememberable?
           .session_form__inner__remember
             = f.check_box :remember_me

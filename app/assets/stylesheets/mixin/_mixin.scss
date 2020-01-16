@@ -13,7 +13,7 @@
   position: absolute;
   position: fixed;
   top: 10px;
-  right: 1%;
+  right: 20%;
   background-color: $main-color;
   border-radius: 5px;
   z-index: 2;
@@ -54,7 +54,7 @@
   position: absolute;
   position: fixed;
   top: 143px;
-  right: 44%;
+  right: 37%;
 }
 
 @mixin other_room_search_btn{
@@ -72,7 +72,7 @@
   position: absolute;
   position: fixed;
   top: 120px;
-  right: 42%;
+  right: 35%;
   padding: 15px 1%;
   box-sizing: border-box;
   border-radius: 5px;
