@@ -1,4 +1,8 @@
-.post_form
+.care_home_post_form
+  .attention_for_recruit
+    ※写真から自動で入居者を抽出し、登録されたご家族のメールアドレスに通知します。
+    %br/
+    (デモ版のため仮想メールソフトを試用しています。実際には送信されません。）
   .post_form_inner
     = form_with(model: @care_home_post, url: care_home_posts_path, method: :post, local: true) do |f|
       = f.text_field :title, class: "post_form_inner__title", placeholder: 'タイトルを入力してください'

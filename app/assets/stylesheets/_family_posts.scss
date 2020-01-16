@@ -24,3 +24,9 @@
   margin: auto;
   background-color: red;
 }
+
+.post_form{
+  height: 60px;
+  padding: 15px 1%;
+  @include post_form;
+}

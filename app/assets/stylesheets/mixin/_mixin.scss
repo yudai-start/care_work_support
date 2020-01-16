@@ -163,3 +163,45 @@
     }
   }
 }
+
+@mixin post_form{
+  width: 50%;
+  position: absolute;
+  position: fixed;
+  bottom: 15px;
+  right: 1%;
+  border-radius: 5px;
+  background-color: $sub-color;
+  z-index: 2;
+  box-sizing: border-box;
+  .post_form_inner{
+    height: 30px;
+    width: 100%;
+    form{
+      height: 100%;
+      width: 100%;
+      .post_form_inner__title{
+        height: 30px;
+        width: 89%;
+        background-color: $off-color;
+        padding: 0 8% 0 1%;
+        font-size: $base-font-size;
+      }
+      .post_form_inner__image--btn{
+        display: none;
+      }
+      .post_form_inner__image--icon{
+        position: absolute;
+        right: 15%;
+        bottom: 22px;
+        cursor:pointer
+      }
+      .post_form_inner__submit{
+        height: 30px;
+        width: 9%;
+        font-size: $base-font-size;
+        background-color: $sub-color;
+      }
+    }
+  }
+}
