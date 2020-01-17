@@ -67,6 +67,7 @@
           margin: 0 auto;
           padding-top: 10px;
           box-sizing: border-box;
+
           img{
             width: 100%;      
           }
@@ -83,6 +84,18 @@
           margin: 10px 0 0 80%;
           font-size: $base-font-size;
           color: #59e2e2;
+        }
+        &__edit{
+          height: 20px;
+          width: 8%;
+          margin-left: 82%;
+          display: block;
+          border-radius: 10px;
+          background-color:  $main-color;
+          color: $off-color;
+          font-size: $head-font-size;
+          text-align: center;
+
         }
       }
     }
@@ -102,33 +115,63 @@
   padding: 15px 1%;
   box-sizing: border-box;
   &_inner{
-    height: 30px;
-    width: 100%;
-    form{
-      height: 100%;
+    @include post_form_inner;
+  }
+}
+
+.edit_post_main{
+  height: calc(100% - 120px);
+  width: 100%;
+  margin-top: 120px;
+  .edit_post{
+    width: 60%;
+    background-color: $main-rgba;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 50px 5%;
+    box-sizing: border-box;
+    .edit_post_image_area{
+      width: 80%;
+      margin: 0 auto;
+      .edit_post_image{
+        width: 100%;
+      }
+      img{
+        width: 100%;
+      }
+    }
+    .edit_posts_form_inner{
+      height: 30px;
       width: 100%;
-      .post_form_inner__title{
-        height: 30px;
-        width: 89%;
-        background-color: $off-color;
-        padding: 0 8% 0 1%;
-        font-size: $base-font-size;
-      }
-      .post_form_inner__image--btn{
-        display: none;
-      }
-      .post_form_inner__image--icon{
-        position: absolute;
-        right: 15%;
-        bottom: 22px;
-        cursor:pointer
-      }
-      .post_form_inner__submit{
-        height: 30px;
-        width: 9%;
-        font-size: $base-font-size;
-        background-color: $sub-color;
+      margin-top: 20px;
+      position: relative;
+      form{
+        height: 100%;
+        width: 100%;
+        .post_form_inner__title{
+          height: 30px;
+          width: 89%;
+          background-color: $off-color;
+          padding: 0 8% 0 1%;
+          font-size: $base-font-size;
+        }
+        .post_form_inner__image--btn{
+          display: none;
+        }
+        .post_form_inner__image--icon{
+          position: absolute;
+          right: 14%;
+          bottom: 6px;
+          cursor:pointer
+        }
+        .post_form_inner__submit{
+          height: 30px;
+          width: 9%;
+          font-size: $base-font-size;
+          background-color: $sub-color;
+        }
       }
     }
   }
 }
+

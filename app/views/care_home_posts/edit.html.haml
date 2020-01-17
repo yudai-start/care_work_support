@@ -1,0 +1,16 @@
+= render partial: "layouts/navbar"
+
+.edit_post_main
+  .edit_post
+    .edit_post_image_area
+      = image_tag @care_home_post.image.url, class: "edit_post_image"
+
+    .edit_posts_form_inner
+      = form_with(model: @care_home_post, local: true, class: "edit_post_form") do |f|
+        = f.text_field :title, class: "post_form_inner__title", placeholder: 'タイトルを入力してください'
+        = f.label :image, class: "post_form_inner__image" do
+          = icon('fas', 'camera', class: 'post_form_inner__image--icon')
+          = f.file_field :image, class: "post_form_inner__image--btn"
+        = f.submit '変更', class: "post_form_inner__submit"
+      = link_to care_home_post_path, method: :delete, class: "detete_post" do
+        .i.fa.fa-edit
