@@ -4,8 +4,10 @@ $(document).ready(function(){
     auto: true,
     autoStart: true,
     speed: 3000,
-    pause: 3000,
+    pause: 2000,
     infiniteLoop: true,
-    pager: false
+    pager: false,
+    prevSelector: '.custom-prev',
+    nextSelector: '.custom-next'
   });
 });
