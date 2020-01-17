@@ -95,7 +95,6 @@
           color: $off-color;
           font-size: $head-font-size;
           text-align: center;
-
         }
       }
     }
@@ -128,7 +127,7 @@
     background-color: $main-rgba;
     margin: 0 auto;
     border-radius: 20px;
-    padding: 50px 5%;
+    padding: 50px 5% 20px;
     box-sizing: border-box;
     .edit_post_image_area{
       width: 80%;
@@ -167,10 +166,25 @@
         .post_form_inner__submit{
           height: 30px;
           width: 9%;
-          font-size: $base-font-size;
-          background-color: $sub-color;
+          border-radius: 15px;
+          font-size: $head-font-size;
+          background-color: $main-color;
+          color: $off-color;
+          border: none;
         }
       }
+    }
+    .detete_post{
+      height: 30px;
+      width: 9%;
+      margin: 30px 0 0 95%;
+      display: block;
+      border-radius: 15px;
+      text-align: center;
+      line-height: 30px;
+      color: black;
+      font-size: $base-font-size;
+      background-color: $sub-color;
     }
   }
 }

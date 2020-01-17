@@ -22,6 +22,5 @@
           
           = link_to "編集", "care_home_posts/#{care_home_post.id}/edit", class: "post__edit"
 
-
 - if current_user.role == "admin"
   = render partial: "post_form"

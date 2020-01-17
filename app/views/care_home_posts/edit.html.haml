@@ -12,5 +12,4 @@
           = icon('fas', 'camera', class: 'post_form_inner__image--icon')
           = f.file_field :image, class: "post_form_inner__image--btn"
         = f.submit '変更', class: "post_form_inner__submit"
-      = link_to care_home_post_path, method: :delete, class: "detete_post" do
-        .i.fa.fa-edit
+    = link_to "削除", care_home_post_path, method: :delete, class: "detete_post"
