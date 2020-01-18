@@ -8,6 +8,8 @@ $(document).ready(function(){
     speed: 3000,
     pause: 2000,
     infiniteLoop: true,
-    pager: false
+    pager: false,
+    prevSelector: '.custom-prev',
+    nextSelector: '.custom-next'
   });
 });

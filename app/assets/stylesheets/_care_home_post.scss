@@ -189,3 +189,13 @@
   }
 }
 
+.care_home_post_form{
+  height: 90px;
+  padding: 0 1% 15px;
+  @include post_form;
+}
+
+.attention_for_recruit{
+  font-size: 14px;
+  color: red;
+}

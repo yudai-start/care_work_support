@@ -35,8 +35,9 @@ Pass: gen111
 管理者アカウントでログインし、右下の投稿フォームより写真を投稿してください。  
 入居者と顔が一致した場合、登録済のメールアドレスへ通知が送られ、画面上部にその旨が表示されます。  
 ※他の方の目に触れる可能性があるため、適宜下記のフリー写真をダウンロードして使用してください。  
+https://care-work-support.s3-ap-northeast-1.amazonaws.com/uploads/4cc8c1101779a21a7e5ff562cae8ce74_s.jpg
 https://care-work-support.s3-ap-northeast-1.amazonaws.com/uploads/roujin535.jpg  
-https://care-work-support.s3-ap-northeast-1.amazonaws.com/uploads/1ab607.jpg
+https://care-work-support.s3-ap-northeast-1.amazonaws.com/uploads/960a00888987313f6d2df001b65eb76b_s.jpg
 
 ## Development environment
 言語:Ruby(2.5.1), HTML, CSS,JavaScript(jQuery)  FW:Ruby on rails(5.0.7.2)  
