@@ -4,7 +4,7 @@ Rails.application.routes.draw do
    }
 
   root to: "care_home_posts#index"
-  resources :care_home_posts, only: [:index, :create]
+  resources :care_home_posts, only: [:index, :create, :update, :edit, :destroy]
   resources :users, only: [:index]
   resources :family_rooms, only: [:index] do
     resources :family_posts, only: [:index, :create]

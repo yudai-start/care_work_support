@@ -11,7 +11,7 @@ module CommonActions
       )
   end
 
-  def registration_face(image_path)   #写真に写っている全ての人物のface_idを取得しrekognitionに登録
+  def registration_face(record, image_path)   #写真に写っている全ての人物のface_idを取得しrekognitionに登録
 
     begin
       result = client.index_faces({    #rekoognitonのface_id取得API
@@ -19,7 +19,7 @@ module CommonActions
         image: {
           s3_object: {
             bucket: "care-work-support",
-            name: "uploads/#{image_path}",
+            name: "uploads/#{record.class.to_s.underscore}/image/#{record.id}/#{image_path}"
           },
         }
       })
@@ -47,9 +47,9 @@ module CommonActions
 
   end
  
-  def search_all_users_in_photo(image_path) #一つの写真に写っている全ての人物に対し、登録されているユーザーの全てのface_idから、最も一致率の高いface_idを抽出
+  def search_all_users_in_photo(record, image_path) #一つの写真に写っている全ての人物に対し、登録されているユーザーの全てのface_idから、最も一致率の高いface_idを抽出
 
-    face_ids = registration_face(image_path)
+    face_ids = registration_face(record, image_path)
     if face_ids.present?
       match_face_ids = face_ids.map do |face_id|
         search_face(face_id)
@@ -90,6 +90,11 @@ module CommonActions
     users.each do |user|
       care_home_post.user_care_home_posts.create(user_id: user.id)
     end
+  end
+
+  def delete_user_care_home_posts(care_home_post)
+    binding.pry
+    care_home_post.user_care_home_posts.destroy
   end
 
   def send_mail(users)
