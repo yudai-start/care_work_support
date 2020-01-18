@@ -47,12 +47,12 @@
 .post_main{
   height: 100%;
   width: 100%;
-  margin-top: 200px;
+  margin: 200px 0;
   .post_index{
     .posts{
       height: 100%;
       width: 60%;
-      margin: 0 auto;
+      margin: 0 auto 200px;
       padding: 50px 0; 
       box-sizing: border-box;
       background-color: $main-rgba;
