@@ -191,6 +191,7 @@
 
 .care_home_post_form{
   height: 90px;
+  min-width: 490px;
   padding: 0 1% 15px;
   @include post_form;
 }
