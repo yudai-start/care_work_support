@@ -1,5 +1,5 @@
 class NotificationMailer < ApplicationMailer
-  default from: 'ケアハウス<fukuta.yudai@gmail.com>'
+  default from: 'ケアハウス<fukuta.yudai@mail.com>'
 
   def notice_care_home_post_mail(user)
     @user = user
